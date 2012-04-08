@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Beam it up</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="icon" type="image/png" href="/favicon.ico">
+</head>
+<body>
+  <h1>Beam it up</h1>
+
+  Instructions:
+
+  <ol>
+    <li>Drag this link [<a href="" id="bookmarklet" title="bookmarklet">Beam it up</a>] to your bookmarks bar</li>
+    <li>Navigate to the page you want to share</li>
+    <li>Click the bookmarklet. The page will be shared to the window running beam it up.</li>
+  </ol>
+
+  <script type="text/javascript">
+    //console.log(encodeURIComponent(window.location.protocol + "//" + window.location.host));
+    document.getElementById('bookmarklet').href = "javascript:(function() {var s = document.createElement('script');s.setAttribute('type', 'text/javascript');s.setAttribute('src','http://"+window.location.host+"/bookmarklet/"+encodeURIComponent(encodeURIComponent('http://'+window.location.host))+"');document.head.appendChild(s);}());";
+  </script>
+</body>
+</html>

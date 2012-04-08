@@ -1,0 +1,2 @@
+body { overflow: hidden; margin: 0 }
+iframe.shim { width: 2000px; height: 10000px; border: 0; }

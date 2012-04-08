@@ -1,0 +1,12 @@
+{
+    "name": "beam-it-up"
+  , "version": "0.0.1"
+  , "private": true
+  , "dependencies": {
+      "express": "2.5.2"
+    , "jqtpl": ">= 0.0.1"
+    , "uglify-js": ">=0.0.1"
+    , "supervisor": ">=0.0.1"
+    , "dust": ">=0.0.1"
+  }
+}

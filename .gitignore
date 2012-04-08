@@ -1,0 +1,3 @@
+*.swp
+app/node_modules/
+app/socket_server/node_modules/

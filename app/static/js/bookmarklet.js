@@ -1,0 +1,63 @@
+(function() {
+
+  var shareUrl = encodeURIComponent(window.location);
+  var baseUrl = 'http://smclaugh-ld:3400/';
+  var hitUrl = baseUrl + 'share/' + shareUrl;
+  var closeUrl = baseUrl + 'close/';
+  var scrollUrl = baseUrl + 'scrollby/';
+  var iframe = window.beamItUpShareIFrame;
+  var closeButton = window.beamItUpShareCloseButton;
+
+  var scrollX = 0;
+  var scrollY = 0;
+  var scrollTimeout;
+  var scrollDelay = 60;
+
+  if(!iframe) {
+    iframe = window.beamItUpShareIFrame = document.createElement('iframe');
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    closeButton = window.beamItUpShareCloseButton = document.createElement('button');
+    closeButton.innerHTML = 'Stop Sharing';
+    closeButton.style['font-size'] = '3em';
+    closeButton.style['color'] = '#fff';
+    closeButton.style['background'] = 'red';
+    closeButton.style['position'] = 'fixed';
+    closeButton.style['top'] = '0';
+    closeButton.style['right'] = '0';
+    closeButton.addEventListener('click', function() {
+        navigate( closeUrl );
+        closeButton.style['display'] = 'none';
+    }, false);
+    document.body.appendChild(closeButton);
+    window.addEventListener('scroll', onScroll, false);
+  }
+
+  navigate( hitUrl );
+  closeButton.style['display'] = 'block';
+
+  function onScroll( e ) {
+    var xdelta;
+    var ydelta;
+
+    if(typeof window.beamItUpLastPageXOffset !== 'undefined' && typeof window.beamItUpLastPageYOffset !== 'undefined') {
+      xdelta = window.pageXOffset - window.beamItUpLastPageXOffset;
+      ydelta = window.pageYOffset - window.beamItUpLastPageYOffset;
+
+      scrollX += xdelta;
+      scrollY += ydelta;
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function() {
+          navigate( scrollUrl + scrollX + '/' + scrollY );
+          scrollX = scrollY = 0;
+      }, scrollDelay);
+    }
+    window.beamItUpLastPageXOffset = window.pageXOffset;
+    window.beamItUpLastPageYOffset = window.pageYOffset;
+  }
+
+  function navigate( url ) {
+    iframe.setAttribute('src', url);
+  }
+ }());
