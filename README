@@ -1,0 +1,19 @@
+Beam it Up! lets you quickly project web pages from one computer to another.
+
+Quick Start
+------------
+
+Let's say you have two computers, computer A and computer B. Computer A is hooked up to a large LCD screen. Computer B is your laptop. Using Beam it up, you can navigate to a webpage on B, click a bookmarklet, and instantly see that webpage displayed on A.
+
+Here's how to get started:
+
+1. Make sure you have Node.js installed (versions 0.4.x-0.6.x are supported)
+2. Make sure you have NPM (node package manager) installed
+3. Clone this git repo
+4. cd beamitup/app
+5. run: npm install
+6. Start beamitup: node app.js
+
+By default, the beam server will run on port 3400. You can change this by manually specifying a port on the command line, such as: node app.js 4400. This will start the server on port 4400.
+
+Once the server is started, open a browser and go to: http://localhost:3400

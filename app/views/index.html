@@ -11,13 +11,14 @@
   Instructions:
 
   <ol>
-    <li>Drag this link [<a href="" id="bookmarklet" title="bookmarklet">Beam it up</a>] to your bookmarks bar</li>
+    <li>Open the [<a href="" id="client-ui">client UI</a>] on the computer you want to beam TO</li>
+    <li>On the computer you want to beam FROM, drag this link [<a href="" id="bookmarklet" title="bookmarklet">Beam it up</a>] to your bookmarks bar</li>
     <li>Navigate to the page you want to share</li>
     <li>Click the bookmarklet. The page will be shared to the window running beam it up.</li>
   </ol>
 
   <script type="text/javascript">
-    //console.log(encodeURIComponent(window.location.protocol + "//" + window.location.host));
+    document.getElementById('client-ui').href = window.location.protocol + '//' + window.location.host + '/client-ui';
     document.getElementById('bookmarklet').href = "javascript:(function() {var s = document.createElement('script');s.setAttribute('type', 'text/javascript');s.setAttribute('src','http://"+window.location.host+"/bookmarklet/"+encodeURIComponent(encodeURIComponent('http://'+window.location.host))+"');document.head.appendChild(s);}());";
   </script>
 </body>
