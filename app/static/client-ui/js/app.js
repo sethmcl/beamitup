@@ -2,7 +2,7 @@ define(function(require) {
   var Frame = require('Frame');
   var openFrames = window.openFrames = [];
   var socket;
-  var host = window.location.port + '//' + window.location.host;
+  var host = window.location.protocol + '//' + window.location.host;
   var remoteFrame;
 
   /**
